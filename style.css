@@ -1,0 +1,294 @@
+/* ============================================================
+   AWM @ SLU — design tokens
+   Color:  ivory #FAF7F2 · ink #241F3A · violet #6B4E9B
+           amber #E8873A · hairline #DDD3E8 · card #FFFFFF
+   Type:   Fraunces (display) · Inter (body) · IBM Plex Mono (labels)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root {
+  --ivory: #FAF7F2;
+  --ink: #241F3A;
+  --violet: #6B4E9B;
+  --violet-deep: #4E3873;
+  --amber: #E8873A;
+  --hairline: #DDD3E8;
+  --card: #FFFFFF;
+  --max: 760px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--violet-deep); text-decoration-thickness: 1px; }
+a:hover { color: var(--amber); }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+img { max-width: 100%; display: block; }
+
+h1, h2, h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  color: var(--violet-deep);
+}
+
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin: 0 0 0.6em;
+}
+
+/* ---------- shell ---------- */
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+header.site {
+  border-bottom: 1px solid var(--hairline);
+  padding: 1.4rem 0;
+}
+
+nav.site {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.brand:hover { color: var(--violet); }
+
+nav.site a.navlink {
+  margin-left: 1.6rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+}
+nav.site a.navlink:hover,
+nav.site a.navlink.active {
+  color: var(--violet-deep);
+  border-bottom-color: var(--amber);
+}
+
+/* ---------- hero + signature graph motif ---------- */
+
+.hero {
+  padding: 3.5rem 0 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.1rem, 5vw, 2.75rem);
+  font-style: italic;
+  max-width: 12ch;
+}
+
+.hero p.lede {
+  font-size: 1.08rem;
+  max-width: 46ch;
+  color: var(--ink);
+}
+
+.graph-svg circle {
+  fill: var(--card);
+  stroke: var(--violet);
+  stroke-width: 1.5;
+}
+.graph-svg circle.node-amber { stroke: var(--amber); }
+.graph-svg line {
+  stroke: var(--hairline);
+  stroke-width: 1.4;
+}
+.graph-svg {
+  width: 100%;
+  height: auto;
+  animation: fade-in-graph 1s ease-out;
+}
+@keyframes fade-in-graph {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .graph-svg { animation: none; }
+}
+
+/* ---------- content sections ---------- */
+
+section { padding: 2rem 0; }
+section + section { border-top: 1px solid var(--hairline); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  padding: 1.4rem 1.6rem;
+}
+
+.meeting-card {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+}
+.meeting-time {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.3rem;
+  color: var(--violet-deep);
+  white-space: nowrap;
+}
+
+.links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+.btn {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--violet);
+  border-radius: 3px;
+  color: var(--violet-deep);
+}
+.btn:hover { background: var(--violet); color: var(--ivory); }
+.btn.amber { border-color: var(--amber); color: var(--amber); }
+.btn.amber:hover { background: var(--amber); color: var(--ivory); }
+
+.board-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+.board-list li {
+  padding-left: 1rem;
+  border-left: 2px solid var(--hairline);
+}
+.board-list .role {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: block;
+}
+
+.notice {
+  background: #F1EAF9;
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- events timeline ---------- */
+
+.year-group { margin-bottom: 2.2rem; }
+.year-group h2 {
+  font-style: italic;
+  font-size: 1.4rem;
+  border-bottom: 1px solid var(--hairline);
+  padding-bottom: 0.4rem;
+}
+
+.event {
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  gap: 1.1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.event:last-child { border-bottom: none; }
+
+.event .date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--violet-deep);
+  padding-top: 0.2rem;
+}
+
+.event h3 {
+  font-size: 1.02rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+
+.event .poster-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
+.event .poster-thumb {
+  margin-top: 0.6rem;
+  max-width: 220px;
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+}
+
+/* ---------- footer ---------- */
+
+footer.site {
+  border-top: 1px solid var(--hairline);
+  padding: 2rem 0 3rem;
+  font-size: 0.85rem;
+  color: #6b6479;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 640px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero .graph-svg { max-width: 220px; margin: 0 auto; }
+  .event { grid-template-columns: 1fr; gap: 0.3rem; }
+  .meeting-card { flex-direction: column; }
+  nav.site a.navlink { margin-left: 1rem; }
+}
